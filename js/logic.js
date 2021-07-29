@@ -1,8 +1,17 @@
 const startBtn = document.getElementById('start')
+const startScreen = document.getElementById('start-screen')
+const questionsEle = document.getElementById('questions')
+const questionTitle = document.getElementById('question-title')
 console.log(startBtn)
 startBtn.addEventListener('click', startListener)
-let clicks=0
+
+
 function startListener() {
-    clicks++
-    console.log(`start button has been clicked ${clicks} times`)
+    startScreen.classList.add('hide')
+    console.log("hiding")
+    questionsEle.classList.remove('hide')
+    
+}
+function setQuestion() {
+    questionTitle.innerText = question.question
 }
