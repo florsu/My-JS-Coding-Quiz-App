@@ -12,7 +12,7 @@ startBtn.addEventListener('click', startListener)
 submitBtn.addEventListener('click', submitListener)
 
 let quizIndex = 0
-let time = 60 * 5
+let time = 5
 let timer
 
 function startListener() {
@@ -67,14 +67,12 @@ function pickChoice() {
 }
 
 function nextQuestion() {
-    hideFeedback()
     quizIndex++
     if (quizIndex + 1 > quiz.length) {
-        clearInterval(timer)
-        questionsEle.classList.add('hide')
-        endScreen.classList.remove('hide')
+        endQuiz()
         return
     }
+    hideFeedback()
     setQuestion(quiz[quizIndex])
     setChoices(quiz[quizIndex])
 }
@@ -89,6 +87,11 @@ function subtractTime(seconds) {
     }
     timeEle.innerHTML = formatTime()
     console.log(`remaining seconds = ${formatTime()}`)
+    if (time == 0) {
+        feedbackEle.classList.remove('hide')
+        feedbackEle.innerHTML = 'GAME OVER!'
+        setTimeout(endQuiz, 1000)
+    }
 }
 
 function updateTimer() {
@@ -104,4 +107,11 @@ function formatTime() {
 
 function hideFeedback() {
     feedbackEle.classList.add('hide')
+}
+
+function endQuiz() {
+    hideFeedback()
+    clearInterval(timer)
+    questionsEle.classList.add('hide')
+    endScreen.classList.remove('hide')
 }
