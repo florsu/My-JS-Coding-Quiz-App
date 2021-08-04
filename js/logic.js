@@ -12,7 +12,7 @@ startBtn.addEventListener('click', startListener)
 submitBtn.addEventListener('click', submitListener)
 
 let quizIndex = 0
-let time = 5
+let time = 60 * 5
 let timer
 
 function startListener() {
