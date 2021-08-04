@@ -7,6 +7,7 @@ const endScreen = document.getElementById('end-screen')
 const submitBtn = document.getElementById('submit')
 const timeEle = document.getElementById('time')
 const feedbackEle = document.getElementById('feedback')
+const finalScoreEle = document.getElementById('final-score')
 
 startBtn.addEventListener('click', startListener)
 submitBtn.addEventListener('click', submitListener)
@@ -114,4 +115,5 @@ function endQuiz() {
     clearInterval(timer)
     questionsEle.classList.add('hide')
     endScreen.classList.remove('hide')
+    finalScoreEle.innerHTML = formatTime()
 }
